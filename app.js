@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 var FileStreamRotator = require('file-stream-rotator');
-
+var loginFilter = require('./filter/loginFilter')
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -25,16 +25,16 @@ app.set('view engine', 'jade');
 var logDirectory = __dirname + '/logs';
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
 var accessLogStream = FileStreamRotator.getStream({
-  date_format: 'YYYY-MM-DD',
-  filename: logDirectory + '/access-%DATE%.log',
-  frequency: 'daily',
-  verbose: false
-})
-app.use(logger('combined', {stream: accessLogStream}));
+    date_format: 'YYYY-MM-DD',
+    filename: logDirectory + '/access-%DATE%.log',
+    frequency: 'daily',
+    verbose: false
+});
+
+app.use(loginFilter.loginFilter);
 
 
-
-
+// app.use(logger('combined', { stream: accessLogStream }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -43,11 +43,18 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/users', users);
 
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
+    var err = new Error('Not Found');
+    err.status = 404;
+    err.url = req.url;
+    err.req = req;
+    res.render('404', {
+      'error':err,
+      'message':'404 NOT Found'
+    });
+    // next(err);
 });
 
 // error handlers
@@ -55,31 +62,31 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
-  app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
     });
-  });
 }
 
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
-  res.status(err.status || 500);
-  res.render('error', {
-    message: err.message,
-    error: {}
-  });
+    res.status(err.status || 500);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
 });
 
-function getDate(){
-  var oDate = new Date;
-  var y = oDate.getFullYear();
-  var m = oDate.getHours();
-  var d = oDate.getDate();
-  return ''+y+'-'+m<10?'0'+m:m+d<10?'0'+d:d;
+function getDate() {
+    var oDate = new Date;
+    var y = oDate.getFullYear();
+    var m = oDate.getHours();
+    var d = oDate.getDate();
+    return '' + y + '-' + m < 10 ? '0' + m : m + d < 10 ? '0' + d : d;
 }
 
 
