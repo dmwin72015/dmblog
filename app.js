@@ -6,9 +6,17 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var fs = require('fs');
 var FileStreamRotator = require('file-stream-rotator');
-var loginFilter = require('./filter/loginFilter')
+var session = require('express-session');
+var settings = require('./settings');
+
+
+//自定义的拦截器
+var filter = require('./filter/filter');
+
+//路由器
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var admin = require('./routes/admin');
 
 var app = express();
 
@@ -30,26 +38,25 @@ var accessLogStream = FileStreamRotator.getStream({
     frequency: 'daily',
     verbose: false
 });
-
-app.use(loginFilter.loginFilter);
-
-
+//use 自定义的拦截器
+//app.use(filter.loginFilter);
+//使用session
+app.use(session(settings));
 // app.use(logger('combined', { stream: accessLogStream }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+//路由设置
 app.use('/', routes);
 app.use('/users', users);
-
+app.use('/admin', admin);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
-    err.url = req.url;
-    err.req = req;
     res.render('404', {
       'error':err,
       'message':'404 NOT Found'

@@ -1,0 +1,257 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  |     
+  meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+  |     
+  title 登录-首页
+  |     
+  link(rel='stylesheet', href='/huigou/css/common.css')
+  |     
+  link(rel='stylesheet', href='/huigou/css/main.css')
+.head
+  .head_box.user.clearfix
+    .inner
+      a.logo(href='javascript:;')
+        img(src='/huigou/images/logo.jpg', alt='亿友会')
+        |                     
+        span 亿友会·公众平台
+      |                 
+      .account
+        .user_logo
+          a(href='javascript:void(0);')
+            img(src='/huigou/images/logo.jpg', alt='')
+        |                     
+        .account_info
+          p.user_type
+            a.user_icon.service(href='javascript:void(0);')
+            |                             
+            a.user_icon.verify(href='javascript:void(0);')
+          |                         
+          p.user_name
+            | #{name}
+            span.notices
+              | #{notice_num}
+              span.notices_left
+              |                             
+              span.notices_right
+            |                             
+            span.login_out
+              a#login_out(href='javascript:void(0);') 退出
+          |                         
+          .notices_detail_box
+            ul.notices_msg_list
+              - each item in notice_list
+                li
+                  i.icon_dot ●
+                  a(href='javascript:void(0);')
+                    |  #{item}
+            i.notices_msg_arrow.out
+            |                             
+            i.notices_msg_arrow.in
+            |                             
+            i.notices_msg_close
+|     
+.body
+  .container_box.cell_layout
+    .col_side
+      #menuBar.menu_box
+        dl.menu.first
+          dt.menu_title
+            i.icon_menu
+            | 功能
+          |                         
+          dd 功能子菜单1
+          |                         
+          dd.active 功能子菜单2
+          |                         
+          dd 功能子菜单3
+          |                         
+          dd 功能子菜单4
+          |                         
+          dd 功能子菜单5
+          |                         
+          dd.menu_plugins
+            a#add_plugin(href='javascript:void(0);')
+              | 添加功能插件
+        |                     
+        dl.menu
+          dt.menu_title
+            i.icon_menu
+            | 功能
+          |                         
+          dd 功能子菜单1
+          |                         
+          dd.active 功能子菜单2
+          |                         
+          dd 功能子菜单3
+          |                         
+          dd 功能子菜单4
+          |                         
+          dd 功能子菜单5
+        |                     
+        dl.menu
+          dt.menu_title
+            i.icon_menu
+            | 功能
+          |                         
+          dd 功能子菜单1
+          |                         
+          dd.active 功能子菜单2
+          |                         
+          dd 功能子菜单3
+          |                         
+          dd 功能子菜单4
+          |                         
+          dd 功能子菜单5
+      |                 
+      .faq
+        ul.links
+          li.links_item
+            a(href='javascript:void(0);', target='_blank') 客服中心
+          |                         
+          li.links_item
+            a(href='javascript:void(0);', target='_blank') 侵权投诉
+        |                     
+        p.tail 反馈官号huigou
+    |             
+    .col_main
+      .show_index_area
+        .index_tap.added
+          a(href='javascript:void(0);')
+            i.icon_index_tap
+            | 2500
+            |                             
+            em 昨日注册人数
+        |                     
+        .index_tap.alluser
+          a(href='javascript:void(0);')
+            i.icon_index_tap
+            | 34813
+            |                             
+            em 总人数
+        |                     
+        .index_tap.totle
+          a(href='javascript:void(0);')
+            i.icon_index_tap
+            | 1341
+            |                             
+            em 合伙人总数
+      |                 
+      .show_info_list
+        h3.title_bar 系统公告
+        |                     
+        ul.news_list
+          li
+            a(href='javascript:;')
+              | 产权行为的公告
+              i.icon_news
+            span 2016-12-12
+          |                         
+          li
+            a(href='javascript:;')
+              | 微信公众平台关于整顿侵犯影视作品知识产权行为的公告
+              i.icon_news
+            span 2016-12-12
+          |                         
+          li
+            a(href='javascript:;') 微信公众平台关于权行为的公告
+            span 2016-12-12
+          |                         
+          li
+            a(href='javascript:;')
+              | 微信公众平台关于整顿侵犯影视作品知识产权行为的公告
+              i.icon_news
+            span 2016-12-12
+          |                         
+          li
+            a(href='javascript:;') 微信公众平台关于知识产权行为的公告
+            span 2016-12-12
+          |                         
+          li
+            a(href='javascript:;') 微信公众平台识产权行为的公告
+            span 2016-12-12
+          |                         
+          li
+            a(href='javascript:;') 微信公众平台关于整顿侵犯影视作品知识产权行为的公告
+            span 2016-12-12
+          |                         
+          li
+            a(href='javascript:;') 微信公众平台关于整顿侵犯影视作品知识产权行为的公告
+            span 2016-12-12
+          |                         
+          li
+            a(href='javascript:;') 微信公众平台关品知识产权行为的公告
+            span 2016-12-12
+          |                         
+          li
+            a(href='javascript:;') 微信公众平台影视作品知识产权行为的公告
+            span 2016-12-12
+          |                         
+          li
+            a(href='javascript:;')
+              | 产权行为的公告
+              i.icon_news
+            span 2016-12-12
+          |                         
+          li
+            a(href='javascript:;')
+              | 微信公众平台关于整顿侵犯影视作品知识产权行为的公告
+              i.icon_news
+            span 2016-12-12
+          |                         
+          li
+            a(href='javascript:;') 微信公众平台关于权行为的公告
+            span 2016-12-12
+          |                         
+          li
+            a(href='javascript:;')
+              | 微信公众平台关于整顿侵犯影视作品知识产权行为的公告
+              i.icon_news
+            span 2016-12-12
+      |                 
+      .page_wrap
+        span.page_nav_area
+          a.btn.page_first(href='javascript:void(0);', style='display: none;')
+          |                         
+          a.btn.page_prev(href='javascript:void(0);')
+            i.arrow
+          |                         
+          span.page_num
+            label 4
+            |                             
+            span.num_gap /
+            |                     
+            label 6
+          |                     
+          a.btn.page_next(href='javascript:void(0);')
+            i.arrow
+          |                     
+          a.btn.page_last(href='javascript:void(0);', style='display: none;')
+        |                     
+        span.goto_area
+          input(type='text')
+          |                         
+          a.btn.page_go(href='javascript:void(0);') 跳转
+  |         
+  .faq
+|     
+.foot
+  ul.link_list
+    li
+      a(href='##') 底部链接
+    |             
+    li
+      a(href='##') 底部链接
+    |             
+    li
+      a(href='##') 底部链接
+    |             
+    li
+      a(href='##') 底部链接
+    |             
+    li
+      a(href='##') 北京亿友会有限责任公司   京备 10003499 版本所有   Copyright © 2015-2016 . All Rights Reserved
+script(src='/huigou/js/sea.js')
+script.
+  seajs.use('index')

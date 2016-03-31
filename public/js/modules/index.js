@@ -39,8 +39,8 @@ define(function (require, exports, module) {
     //判断某一个元素实在包含另一个元素
     function isContains(o1, o2) {
         if (o1.compareDocumentPosition) {
-            //TODO compareDocumentPosition返回值有点问题
-            return o1 === o2 || !!(o1.compareDocumentPosition(o2) === 20);
+            //TODO compareDocumentPosition返回值有点意思
+            return o1 === o2 || !!(o1.compareDocumentPosition(o2) & 16);
         }
         if (o1.contains && o1.nodeType === 1) {
             return o1.contains(o2) && o1 !== o2;

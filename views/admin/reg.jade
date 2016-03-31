@@ -1,0 +1,135 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  |     
+  meta(http-equiv='X-UA-Compatible', content='IE=edge,chrome=1')
+  |     
+  meta(name='renderer', content='webkit')
+  |     
+  title 注册
+  |     
+  link(rel='stylesheet', href='css/common.css')
+  |     
+  link(rel='stylesheet', href='css/main.css')
+.head
+  .head_box.clearfix
+    .inner
+      a.logo(href='javascript:;')
+        img(src='images/logo.jpg', alt='亿友会')
+        |                     
+        span 亿友会·公众平台
+      //
+        <div class="account">
+        <span>第一次使用公众平台？</span>
+        <a href="javascript:;" class="reg">立即注册</a>
+        <i style="color: #8d8d8d">|</i>
+        <a href="javascript:;" class="help">使用帮助</a>
+        </div>
+|     
+.content.reg
+  .reg_box
+    .reg_steps
+      ul.steps_list.clearfix
+        li.step_item.prev
+          h4 1 第一步
+        |                     
+        li.step_item.current
+          h4 2 第二步
+        |                     
+        li.step_item.next
+          h4 3 第三步
+        |                     
+        li.step_item.nnext
+          h4 4 第四步
+        |                     
+        li.step_item.nnext
+          h4 5 第五步
+    |             
+    .reg_info_box.clearfix
+      .form_wrap
+        form#reg_form.reg_form(action='')
+          .form_contral_group.title_tips
+            i.form_tip_icon
+            |  每个邮箱仅能申请一种帐号：公众号或企业号
+          |                         
+          .form_contral_group
+            label.from_label(for='') 邮箱
+            |                             
+            .form_controls
+              span.form_input_box
+                input.form_input(name='email', id='', type='text', placeholder='email')
+              |                                 
+              p.form_msg.fail 请输入正确的邮箱
+              |                                 
+              p.form_tips
+                | 作为登录帐号，请填写未被微信公众平台注册，未被微信开放平台注册，未被个人微信号绑定的邮箱
+          |                         
+          .form_contral_group
+            label.from_label(for='') 密码
+            |                             
+            .form_controls
+              span.form_input_box
+                input.form_input(name='email', id='', type='text', placeholder='email')
+              |                                 
+              p.form_msg.fail.disN 请输入正确的密码
+              |                                 
+              p.form_tips
+                | 字母、数字或者英文符号，最短8位，区分大小写
+          |                         
+          .form_contral_group
+            label.from_label(for='') 确认密码
+            |                             
+            .form_controls
+              span.form_input_box
+                input.form_input(name='email', id='', type='text', placeholder='email')
+              |                                 
+              p.form_msg.fail.disN 请输入正确的邮箱
+              |                                 
+              p.form_tips
+                | 请再次输入密码
+          |                         
+          .form_contral_group
+            label.from_label(for='') 验证码
+            |                             
+            .form_controls
+              span.form_input_box
+                input.form_input(name='email', id='', type='text', placeholder='email')
+              |                                 
+              .verifyimg_wrp
+                img(src='images/verifycode.jpg', alt='')
+                |                                     
+                a(href='javascript:;') 换一张
+              |                                 
+              p.form_msg.fail.disN 验证码错误
+              |                                 
+              .tool_area
+                label.frm_control_checkbox.frm_checkbox_label(for='reg_form')
+                  i.icon_check
+                  |                                         
+                  input#js_agree.form_checkbox(name='agree', type='checkbox', value='')
+                  |  我同意并遵守
+                  |                                         
+                  a(href='', target='_blank') 《微信公众平台服务协议》
+          |                         
+          .form_contral_group.submit
+            span.btn.btn_primary.btn_input
+              input(type='button', value='提交')
+      |                 
+      .form_tips
+|     
+.foot
+  ul.link_list
+    li
+      a(href='##') 底部链接
+    |             
+    li
+      a(href='##') 底部链接
+    |             
+    li
+      a(href='##') 底部链接
+    |             
+    li
+      a(href='##') 底部链接
+    |             
+    li
+      a(href='##') 北京亿友会有限责任公司   京备 10003499 版本所有   Copyright © 2015-2016 . All Rights Reserved
