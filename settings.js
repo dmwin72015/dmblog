@@ -4,11 +4,13 @@
 var uid = require('uid-safe');
 var setting = {
     secret: 'dmblog',
+    name:'dmblog',
     genid: function (req) {
         return uid() // use UUIDs for session IDs
     },
-    cookie: {maxAge: 60000},
-    saveUninitialized: false
+    resave:false,
+    cookie: {maxAge: 60000,secure:false},
+    saveUninitialized: true
 
 }
 module.exports = setting;

@@ -45,7 +45,7 @@ app.use(session(settings));
 // app.use(logger('combined', { stream: accessLogStream }));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+app.use(cookieParser(settings.secret));
 app.use(express.static(path.join(__dirname, 'public')));
 
 //路由设置
