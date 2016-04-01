@@ -152,7 +152,7 @@ define(function(require, exports, module) {
                 $.ajax({
                     url: '/admin/login',
                     type: 'post',
-                    data: { 'username': 'zhangsan', 'passwd': '123456' }
+                    data: { 'username': 'zhangsan', 'passwd': '123' }
                 });
             });
         }($loginBtn)) : void 0;
@@ -161,6 +161,7 @@ define(function(require, exports, module) {
             if (activObj == $loginBtn[0]) {
                 var oData = xhr.readyState == 4 ? eval('('+xhr.responseText+')') : null;
                 if (oData) {
+                    console.log(oData);
                 	location.href= 'home';
                 }
             }

@@ -11,7 +11,7 @@ var settings = require('./settings');
 
 
 //自定义的拦截器
-var filter = require('./filter/filter');
+// var filter = require('./filter/filter');
 
 //路由器
 var routes = require('./routes/index');

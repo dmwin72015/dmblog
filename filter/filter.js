@@ -25,8 +25,8 @@ module.exports = {
     loginFilter2:function(req, res, next){
         var isAdmin = /^\/admin[\/]{0,1}/g.test(req.url);
         if(isAdmin){
-            console.log(req.Session);
-            res.end(req.Session.userName);
+            console.log(req.session);
+            res.end(req.session.userName);
         }
         next();
     }

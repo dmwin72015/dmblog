@@ -4,7 +4,7 @@
 var express = require('express');
 var router = express.Router();
 router.get('/',function(req,res,next){
-    res.redirect('admin/login');
+    res.redirect('login');
 })
 router.get('/login/undo', function (req, res, next) {
     console.log(req.session);
@@ -27,30 +27,24 @@ router.get('/login/undo', function (req, res, next) {
 router.post('/login', function (req, res, next) {
     var data = req.body;
     //TODO 校验账号密码
-    req.session.userID = data.username;
     req.session.user = data;
     req.session.save();
-    console.log(req.sessionStore,'保存时.....');
-    console.log('保存对象.....');
     res.send('{"error":0,"status":"success","data":' + JSON.stringify(data) + '}');
 });
 router.get('/login', function (req, res, next) {
     res.render('admin/login');
 });
 router.get('/home', function (req, res, next) {
-    for(var name in req.session ){
-        //console.log(name);
-    }
-    console.log(req.session,'session对象获取时...')
-    console.log(req.sessionStore,'获取时.....');
-    if (req.session) {
+    if (req.session.user) {
+    	var name = req.session.user.username;
+    	var pwd = req.session.user.passwd;
         res.render('admin/home', {
-            name: '张三',
-            notice_num: 12,
+            name: name,
+            notice_num: pwd,
             notice_list: ['提示信息提示嘻嘻提示新', '提示信息提示嘻嘻提示新', '提示信息提示嘻嘻提示新', '提示信息提示嘻嘻提示新']
         });
     } else {
-        next();
+       res.redirect('login?code=12');
     }
 })
 module.exports = router;
