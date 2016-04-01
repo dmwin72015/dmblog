@@ -15,6 +15,7 @@ seajs.config({
     // 提前加载并初始化好指定模块
     preload: ['jquery']
 });
+
 define(function(require, exports, module) {
     var $ = require('jquery');
     require('datatable')();

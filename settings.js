@@ -3,16 +3,23 @@
  */
 var uid = require('uid-safe');
 var setting = {
-    secret: 'dm_blog',
     name:'dmblog',
-    // genid: function (req) {
-    //     return uid() // use UUIDs for session IDs
-    // 	  这个地方的sessionID，返回的是一个函数，但是需要的是一个字符串
-    // 	  需要进步研究一下这个插件！！！！
-    //    一直从session里面无法虎丘保存的数据就是有sessionID没有给值。
-    // },
+    genid: function (req) {
+        return uid.sync(18);
+        // use UUIDs for session IDs
+        // 这个地方的sessionID，返回的是一个函数，但是需要的是一个字符串
+        // 需要进步研究一下这个插件！！！！
+        // 一直从session里面无法虎丘保存的数据就是有sessionID没有给值。
+    },
+    secret: 'maroro.red',
     resave:false,
     cookie: {maxAge: 60000,secure:false},
     saveUninitialized: true
+}
+var str = uid(18,getString)
+var str2 = uid.sync(18);
+//console.log(str2);
+function getString(str){
+    //console.log(str);
 }
 module.exports = setting;
