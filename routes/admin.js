@@ -4,7 +4,11 @@
 var express = require('express');
 var router = express.Router();
 router.get('/',function(req,res,next){
-    res.redirect('admin/login');
+    if(req.session.user){
+        res.redirect('home');
+    }else{
+        res.redirect('login');
+    }
 })
 router.get('/login/undo', function (req, res, next) {
     console.log(req.session);
@@ -38,14 +42,14 @@ router.get('/login', function (req, res, next) {
     res.render('admin/login');
 });
 router.get('/home', function (req, res, next) {
-    for(var name in req.session ){
-        //console.log(name);
+    var sess = req.sessionStore.sessions;
+    for(var n in sess){
+        var o = sess[n];
     }
-    console.log(req.session,'session对象获取时...')
-    console.log(req.sessionStore,'获取时.....');
-    if (req.session) {
+    console.log(o.userID);
+    if (sess.userID) {
         res.render('admin/home', {
-            name: '张三',
+            name: sess.userID,
             notice_num: 12,
             notice_list: ['提示信息提示嘻嘻提示新', '提示信息提示嘻嘻提示新', '提示信息提示嘻嘻提示新', '提示信息提示嘻嘻提示新']
         });

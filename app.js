@@ -26,10 +26,12 @@ app.set('view engine', 'jade');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-//旧版
+
+/**旧版 保存在一个文件中**/
 //var accessLogStream = fs.createWriteStream(__dirname + '/logs/access.log', {flags: 'a'})
 //app.use(logger('combined', {stream: accessLogStream}))
-//设置日志保存方式2016-03-26
+
+/**设置日志保存方式2016-03-26**/
 var logDirectory = __dirname + '/logs';
 fs.existsSync(logDirectory) || fs.mkdirSync(logDirectory);
 var accessLogStream = FileStreamRotator.getStream({
@@ -38,16 +40,18 @@ var accessLogStream = FileStreamRotator.getStream({
     frequency: 'daily',
     verbose: false
 });
-//use 自定义的拦截器
+/**use 自定义的拦截器**/
 //app.use(filter.loginFilter);
-//使用session
-app.use(session(settings));
-// app.use(logger('combined', { stream: accessLogStream }));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser(settings.secret));
+
+/*设置静态资源*/
 app.use(express.static(path.join(__dirname, 'public')));
 
+/**session设置**/
+app.use(session(settings));
 //路由设置
 app.use('/', routes);
 app.use('/users', users);
