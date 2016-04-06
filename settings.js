@@ -13,7 +13,7 @@ var setting = {
     },
     secret: 'maroro.red',
     resave:false,
-    cookie: {maxAge: 60000,secure:false},
+    cookie: {maxAge: 160000,secure:false},
     saveUninitialized: true
 }
 var str = uid(18,getString)

@@ -9,9 +9,8 @@ var FileStreamRotator = require('file-stream-rotator');
 var session = require('express-session');
 var settings = require('./settings');
 
-
 //自定义的拦截器
-// var filter = require('./filter/filter');
+//var filter = require('./filter/filter');
 
 //路由器
 var routes = require('./routes/index');
@@ -40,22 +39,23 @@ var accessLogStream = FileStreamRotator.getStream({
     frequency: 'daily',
     verbose: false
 });
-/**use 自定义的拦截器**/
-//app.use(filter.loginFilter);
+/**session设置**/
+app.use(session(settings));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser(settings.secret));
-
+/**use 自定义的拦截器**/
+//app.use(filter.loginFilter);
 /*设置静态资源*/
 app.use(express.static(path.join(__dirname, 'public')));
 
-/**session设置**/
-app.use(session(settings));
+
 //路由设置
 app.use('/', routes);
 app.use('/users', users);
 app.use('/admin', admin);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -14,32 +14,24 @@ head
     .inner
       a.logo(href='javascript:;')
         img(src='/huigou/images/logo.jpg', alt='亿友会')
-        |                     
         span 亿友会·公众平台
-      |                 
       .account
         .user_logo
           a(href='javascript:void(0);')
             img(src='/huigou/images/logo.jpg', alt='')
-        |                     
         .account_info
           p.user_type
             a.user_icon.service(href='javascript:void(0);')
-            |                             
             a.user_icon.verify(href='javascript:void(0);')
-          |                         
           p.user_name
             | #{name}
             span.notices
               | #{notice_num}
               span.notices_left
-              |                             
               span.notices_right
-            |                             
             span.login_out
               a#login_out(href='javascript:void(0);') 退出
-          |                         
-          .notices_detail_box
+          div.notices_detail_box(style='display:#{display}')
             ul.notices_msg_list
               - each item in notice_list
                 li

@@ -1,10 +1,11 @@
 module.exports = {
     'mysql_dev': {
-        host: 'localhost',
+        host: '127.0.0.1',
         user: 'root',
-        password: 'root1234',
+        //password: 'root1234',
+        password: '',
         database: 'dongmin',
-        connectionLimit: 10,
+        connectionLimit: 20,
         supportBigNumbers: true
     },
     'oracle_dev':{

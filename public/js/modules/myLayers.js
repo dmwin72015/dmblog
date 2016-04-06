@@ -75,7 +75,7 @@
 
     function _str2U(str) {
         // 字符串转成unicode码
-        if (!str || str.length < 0)　 return;
+        if (!str || str.length < 0) return;
         var arr = [];
         for (var i = 0; i < str.length; i++) {
             arr[arr.length] = '\\u' + str.charCodeAt(i).toString(16);
@@ -85,7 +85,7 @@
 
     function _U2str(str) {
         // unicode码转成符串 {【4E00-9FA5中文基本汉字范围】
-        if (!str || str.length < 0)　 return;
+        if (!str || str.length < 0) return;
         if (str.indexOf('\\u') == 0) {
             str = str.slice(2)
         }
@@ -109,7 +109,7 @@
         },
         event: 'click',
         shadeClose: 'true',
-        content: '',
+        content: ''
     };
     //常用字符串
     var aType = ['alert', 'confirm', 'prompt', 'tips', 'load'];
@@ -156,7 +156,7 @@
     function bindFn(fn0, fn1) {
         oWrap.one('click', '#layer_btn0,#layer_btn1', function(ev) {
             this.id == 'layer_btn0' ? fn0 && fn0(ev) : fn1 && fn1(ev);
-            $('#layer_close').trigger('click');
+            oWrap.hide().find('.layer_content_box').remove();
         });
     };
 
@@ -182,7 +182,7 @@
         createContent($.extend(default_options, {
             type: 'confirm',
             infoText: msg || options.infoText,
-            titleText: argumnes.title || !!0
+            titleText: options.title || !!0
         }))
         bindFn(fn0, fn1);
     };
@@ -194,6 +194,12 @@
             infoText: msg || options.infoText,
             titleText: options.title || !!0
         }));
+    };
+    DmLayers.tips = function(msg,o){
+        if(o || $.isEmpty(o)) return;
+        var l = $(o).offset().left,
+            t = $(o).offset().top;
+
     };
     $.Layers = $.fn.Layers = function(options) {
         if (this === $) {

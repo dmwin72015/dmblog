@@ -1,3 +1,4 @@
+//文件复制demo
 var fs = require('fs');
 var path = require('path');
 var out = process.stdout;
