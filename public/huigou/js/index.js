@@ -150,7 +150,7 @@ define(function (require, exports, module) {
         var $loginBtn = $('#login_btn');
         $loginBtn.length > 0 ? (function (obj) {
             obj.click(function () {
-                var username = $('#username').val().trim();
+                var username = $.trim($('#username').val());
                 var password = $('#password').val();
                 if (username == '') {
                     $('#error_info').text('请输入账号');

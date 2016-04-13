@@ -9,7 +9,8 @@ var setting = {
         // use UUIDs for session IDs
         // 这个地方的sessionID，返回的是一个函数，但是需要的是一个字符串
         // 需要进步研究一下这个插件！！！！
-        // 一直从session里面无法虎丘保存的数据就是有sessionID没有给值。
+        // 一直从session里面无法保存的数据就是有sessionID没有给值。
+        //没有传参数的时候默认返回的undefined。
     },
     secret: 'maroro.red',
     resave:false,
